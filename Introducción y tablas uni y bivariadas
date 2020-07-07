@@ -1,0 +1,52 @@
+
+/*recursos de STATA: 
+comando help - Manual
+UCLA - annotated output(https://stats.idre.ucla.edu/stata/)
+foro Statalist (https://www.statalist.org/forums/)
+módulos creados por usuarios
+youtube*/
+
+/* Distintas ventanas del programa
+Command
+Results
+Variables
+Properties
+Review
+Data editor
+Do files
+*/
+
+**** Abrir base de datos de ejemplo, National Longitudinal Surveys of Young Women and Mature Women (NLSW)  /*   
+*directorio de datasets incluidos en Stata*
+sysuse dir
+
+sysuse nlsw88
+
+** Descripciónn de la base de datos, informa sobre cantidad de casos, cantidad de variables, tamaño, tipo de cada variable, y etiquetas***
+des
+
+****Trabajar por interfaz, por consola y por sintaxis*****
+
+***Codebook*****
+
+codebook industry
+
+**tablas univariadas**
+
+tab race
+tab race, nolabel
+tab race, plot
+
+tab occupation
+
+**tablas bivariadas***
+
+tab occupation race
+help tab
+
+tab occupation race, row nofre chi
+tab occupation race, col nofre
+
+**con % por columnas y filas le hacemos distintas preguntas a los datos***
+tab  occupation collgrad, row nofre
+tab  occupation collgrad, col nofre
