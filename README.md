@@ -1,5 +1,5 @@
 # Stata-Introductory-course-
-Stata para las Ciencias Sociales en Espaoñ (do-files / syntax)
+Stata para las Ciencias Sociales en Español (do-files / syntax)
 Stata for social sciences
 Repositorio para comandos, do-files, sintaxis, datasets, etc. de Stata
 
