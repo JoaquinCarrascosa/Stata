@@ -1,0 +1,27 @@
+
+
+**Correlaciones**
+sysuse nlsw88
+
+correlate wage grade
+
+corr wage grade if collgrad==0
+corr wage grade if collgrad==1
+
+*listwise*
+corr wage grade ttl_exp
+
+*pairwise*
+pwcorr wage grade ttl_exp, o
+
+*significancia estadística
+pwcorr wage grade ttl_exp, sig
+
+pwcorr wage grade age, star(.05)
+
+*Según grupos*
+by race, sort : correlate wage grade
+
+*
+scatter wage grade || lfit wage grade
+
