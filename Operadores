@@ -1,0 +1,25 @@
+
+
+***Uso de operadores***
+sysuse nlsw88
+help operators
+
+tab occupation if union==1
+tab occupation if union==0
+
+tab occupation race  if c_city==1, col nofre
+
+*salario según graduación universitaria*
+tabstat wage if collgrad==1
+tabstat wage if collgrad==0
+
+*40 o más*
+tab occupation if age>39
+tab occupation if age>=40
+
+*entre 39 y 40*
+tab occupation if age<41 & age>38
+tab occupation if age==40 | age==39
+
+*si NO es sector público*
+tab occupation if industry!=12
