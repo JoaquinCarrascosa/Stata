@@ -1,0 +1,35 @@
+
+**Gráficos**
+sysuse nlsw88
+
+graph box wage 
+
+graph pie, over(occupation)
+
+graph pie race, over(occupation) by(collgrad)
+
+histogram wage
+histogram wage, normal
+histogram wage, bin(25) frequency xtitle(Salario) title(Histograma salario)
+
+graph box wage, over(collgrad)
+
+ssc install ciplot
+ciplot wage if race!=3, by (race)
+
+ssc install vioplot
+vioplot wage, over(collgrad) bwidth(2)
+
+twoway (scatter wage grade if grade>3)
+
+twoway (lfit wage grade if grade>3)
+
+scatter wage grade || lfit wage grade
+
+scatter wage grade || lfit wage grade ||, by(race,  row(1))
+
+qnorm wage, grid
+
+qqplot wage grade
+
+*Guardar, editar, copiar,*
