@@ -1,0 +1,32 @@
+
+
+
+**** Filtrado de casos (subsetting) drop, keep**
+sysuse nlsw88
+
+*nos quedamos con graduadas universitarias*
+keep if collgrad==1
+
+*nos quedamos con raza negra (eliminamos las mujeres que NO son negras)*
+drop if race!=2
+*sería lo mismo que**
+drop if race==1
+drop if race==3
+
+**nos quedamos con entre 35 y 40 años***
+keep if age>34 & age<41
+
+**eliminamos si tiene casos perdidos en la variable de sindicalización**
+tab union, miss
+drop if missing(union)
+
+**Mantener un rango de casos***
+keep in 1/50
+
+**Después, podemos grabar la base o correr la sintaxis cada vez que la abrimos*
+
+**Listar (mostrar la matriz)***
+list collgrad occupation in 1/10
+list industry occupation if race==2
+
+
