@@ -1,0 +1,55 @@
+
+
+**Regresión lineal**
+*Annotated output UCLA: https://stats.idre.ucla.edu/stata/output/regression-analysis/*
+sysuse nlsw88
+scatter wage grade || lfit wage grade
+
+regress wage grade
+*por cada grado, aumenta 0,7u$d por hora el salario*
+
+*variables categóricas, factor variables(i.), multivariados y operadores, i.*
+regress wage i.race
+regress wage grade i.race if race !=3
+
+*Quietly, y guardado de estimaciones para comparar modelos*
+quietly regress wage grade
+eststo model1
+
+quietly regress  wage grade ttl_exp
+eststo model2
+eststo dir
+estout
+esttab
+
+eststo clear
+
+*Estandarización*
+reg wage grade, noheader beta
+regress, beta 
+*intervalo de confianza*
+regress wage grade age, level(90)
+
+
+*Exportar resultados de regresiones*
+sysuse nlsw88, clear
+
+quietly regress wage grade, beta
+eststo model1
+
+quietly regress  wage grade ttl_exp
+eststo model2
+
+esttab using prueba.doc, beta not label nonumber append
+esttab using prueba.xls, beta not label nonumber replace
+
+
+ssc install outreg2
+help outreg2
+
+outreg2 [model1 model2] using prueba2.doc, replace see beta
+
+quietly logit  collgrad i.race if race!=3
+eststo model3
+
+outreg2 [model1 model2 model3] using prueba3.doc, replace see
