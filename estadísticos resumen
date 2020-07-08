@@ -1,0 +1,19 @@
+
+
+**introducción a estadísticos resumen**
+sysuse nlsw88
+
+summarize wage
+mean wage
+
+tabstat wage, statistics( mean range cv median )
+
+histogram wage
+
+**promedios de ingresos por hora según tipo de ocupación***
+
+tabstat wage, statistics( mean sd ) by(occupation)
+
+*tabla flexible para incluir dos variables*
+
+table occupation race, contents(mean wage )
