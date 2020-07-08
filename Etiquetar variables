@@ -1,0 +1,25 @@
+
+
+**Etiquetar variables
+*Data->Data utilities->Label utilities*
+*3 pasos, etiquetar nombre de variable, crear sistema de catgorías, asignar sistema de catgorías a la variable**
+
+sysuse nlsw88
+recode occupation (1 2 = 1) (3 4 = 2) (9 = 2) (5/8 = 3) (10/12=3) (13=.), generate(ocrec)
+
+label variable ocrec "Ocupación"
+
+lab def ocuplab  1 "Prof y Ger"
+lab def ocuplab   2 "Oc. clase media", add
+lab def ocuplab   3 "Oc. clase obrera", add
+
+lab values ocrec ocuplab
+
+tab ocrec
+
+***si nos equivocamos**
+
+label drop ocuplab
+
+***se puede ir etiquetando si se recodifica creando una nueva variable**
+recode occupation (1 2=1 "Prof y Ger") (3 4 9 = 2 "Oc. clase media") (5/8 =3 "Oc. clase obrera") (10/12 =3) (13=.), generate(occuprec2)
