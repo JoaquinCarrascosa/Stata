@@ -1,0 +1,25 @@
+
+*******Recodificar, etiquetar y crear variables*****
+
+/*vamos a redocidificar de la siguiente manera 
+categorías 1 y 2 - Profesionales y gerentes
+categorías 3, 4 y 9 - Oc. clase media
+categorías 5, 6, 7 y 8 + 10, 11 y 12 - Oc. clase obrera
+categorías 13 - missing
+******/
+
+sysuse nlsw88
+
+**creamos una copia de ocupación para recodificar**
+gen ocrec=occupation
+
+*Data->Create or change data->Other variable-transfromation commads-Recode categorical variable*
+
+recode ocrec (1 2=1) (3 4 9 = 2) (5/8 =3) (10/12 =3) (13=.)
+
+*revisamos, si salió bien**
+
+tab occupation ocrec, miss
+**si hay un error, drop ocrec*
+drop ocrec
+
