@@ -1,0 +1,12 @@
+
+***Tabla trivariada**
+sysuse nlsw88
+
+by collgrad, sort : tab  occupation race , nofre col
+bysort collgrad: tab  occupation race , nofre col
+
+
+tab occupation union if c_city==1, row nofre
+tab occupation union if c_city==0, row nofre
+
+table occupation union collgrad, row col scol
