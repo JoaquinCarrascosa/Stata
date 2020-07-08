@@ -1,0 +1,22 @@
+
+**Creación de variables**
+
+sysuse nlsw88
+
+generate ingresosemanal = wage*hours
+
+gen ingresomensual = ingresosemanal*4
+gen ingresoanual = ingresomensual*12
+
+gen occupation2=occupation
+
+gen variablenueva=.
+**ver casos perdidos***
+sort ingresosemanal
+
+**
+***ingresos para quienes trabajan al menos 20 horas semanales***
+generate ingresosemanal2 = wage*hours if hours>19
+
+gen ingresomensual2 = ingresosemanal2*4
+gen ingresoanual2 = ingresomensual2*12
