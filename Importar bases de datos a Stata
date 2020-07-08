@@ -1,0 +1,28 @@
+
+*****Importar bases de datos a Stata (.dta)*******
+
+*Importar de CSV*
+
+*PISAC - Programa de Investigación sobre la Sociedad Argentina Contemporánea*
+ENES, Encuesta Nacional sobre la Estructura Social
+*http://pisac.mincyt.gob.ar/datos.php*
+
+
+*https://www.argentina.gob.ar/educacion/aprender2018/bases-de-microdatos*
+APRENDER 2018
+*dispositivo nacional de evaluación de los aprendizajes *
+
+**Ver documentos: diccionarios, listados de códigos, o cuestionarios***
+
+*Importar de SPSS*
+
+***solo funciona en 32 bits,*
+ssc install usespss
+
+usespss using C:\Users\joaqu\OneDrive\Curso STATA\YT\Importar bases de datos\ENES_Hogares_version_final.sav
+usespss  C:\Users\joaqu\OneDrive\Curso STATA\YT\Importar bases de datos\ENES_Hogares_version_final.sav
+
+
+** y a partir de STATA 16	viene incluido***
+import spss using "C:\Users\joaqu\OneDrive\Curso STATA\YT\Importar bases de datos\ENES_Hogares_version_final.sav"
+
