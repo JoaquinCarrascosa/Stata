@@ -1,0 +1,20 @@
+
+
+**Exportar resultados**
+sysuse nlsw88
+
+set dp comma
+
+tab occupation union
+
+**Copy, copy table**
+
+ssc install tabout
+*se crea archivo en el working directory, puede cambiarse**
+
+tabout occupation collgrad using resultados.xls, cells (col)
+
+tabout occupation race using resultados.xls, cells (col) append
+
+tabout occupation using resultados.xls, cells (col) replace
+
