@@ -1,0 +1,19 @@
+
+*Count, sort, browse, edit, list*
+clear
+sysuse nlsw88
+
+count
+count if race==1
+
+bysort race: count
+
+sort occupation
+sort occupation collgrad
+
+browse occupation collgrad
+browse age race if race==1
+
+edit collgrad
+
+list industry occupation if race==2
