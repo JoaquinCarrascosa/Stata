@@ -1,0 +1,70 @@
+	
+*Macros**
+
+sysuse nlsw88
+
+global lista wage ttl_exp tenure
+
+summ $lista
+summ wage ttl_exp tenure
+
+reg $lista, b
+reg hours $lista
+
+keep $lista
+
+macro dir
+macro drop lista
+macro list
+
+help macro
+
+
+local x 12321
+display `x'
+
+
+** Para recodificar y etiquetar**
+*Variables de escala likert del 1 al 7*
+/* 1 siendo en total desacuerdo
+ 4 ni acuerdo ni en desacuerdo
+ 7 totalmente de acuerdo*/
+
+clear
+ 
+input byte(v1 v2 v3 v4)
+1 2 1 3
+1 5 4 7
+2 1 3 6
+1 2 1 3
+1 5 4 7
+1 2 2 1
+2 1 1 2
+5 7 1 4
+1 1 1 3
+5 7 1 4
+1 1 1 3
+1 5 4 7
+2 1 3 6
+1 2 1 3
+1 3 4 5
+7 4 5 3
+5 5 5 2
+4 4 4 7
+end
+
+global vars  v1 v2 v3 v4
+
+tab v4
+
+recode $vars (1/3 = 1) (4 = 2) (5/7 = 3)
+
+label def vcat 1 "Desacuerdo",
+label def vcat 2 "Ni acuerdo ni desacuerdo", add
+label def vcat 3 "De acuerdo", add
+
+label values $vars vcat
+
+tab v4
+
+label drop vcat
