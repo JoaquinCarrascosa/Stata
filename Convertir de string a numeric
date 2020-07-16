@@ -1,0 +1,31 @@
+
+****Convertir de string a numeric******
+
+clear
+ 
+input str3(v1 v2 v3 v4)
+"1" "3" "1" "3"
+"1" "5" "4" "7"
+"1" "2" "3" "3"
+"4" "2" "2" "1"
+"1" "2" "1" "3"
+"1" "3" "1" "4"
+"1" "5" "4" "7"
+"4" "2" "6" "9"
+"2" "5" "4" "7"
+"1" "2" "3" "3"
+"1" "2" "2" "3"
+"1" "2" "2" "3"
+end
+
+browse
+
+mean v1
+summ v1
+corr v1 v2
+
+destring v1, generate(v1num) force
+
+des v1 v1num
+
+summ v1num
