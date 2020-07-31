@@ -1,0 +1,36 @@
+
+*Regresión logística*
+
+https://stats.idre.ucla.edu/stata/dae/logistic-regression/
+https://stats.idre.ucla.edu/stata/faq/how-do-i-interpret-odds-ratios-in-logistic-regression/
+
+logit fits a logit model for a binary response by maximum likelihood; it models the
+probability of a positive outcome given a set of regressors.  depvar equal to nonzero
+and nonmissing (typically depvar equal to one) indicates a positive outcome, whereas
+depvar equal to zero indicates a negative outcome.
+
+sysuse nlsw88
+
+tab collgrad
+tab collgrad, nolab
+tab race
+tab race, nolab
+
+recode race (3=.)
+
+*Logit (log odds)*
+logit collgrad i.race
+
+logit collgrad i.race, or
+
+logit collgrad i.race , or level(99)
+
+*logistic reporta en odds ratio*
+logistic collgrad i.race
+
+*Exportar*
+logit collgrad i.race i.south, or
+eststo model1
+
+outreg2 [model1] using regresiones.doc, append 
+outreg2 [model1] using regresiones.doc, append eform
