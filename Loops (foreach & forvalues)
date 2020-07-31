@@ -1,0 +1,63 @@
+
+*Loops, foreach, forvalues*
+
+sysuse nlsw88
+
+*Tabla para cada variable**
+foreach x of varlist race collgrad union{
+tab `x'
+	}	
+	
+
+*Usando macro**
+ 
+global lista collgrad race occupation
+
+ foreach x of varlist $lista{
+   tab `x'
+        }
+		
+*Para regresiones**
+	
+global vdep wage
+global vind grade ttl_exp
+
+ foreach x of varlist $vind{
+ reg $vdep `x', noheader
+        }
+		
+*Regresión con variable de factor**
+		
+global vdep wage
+global vind occupation collgrad race
+
+ foreach x of varlist $vind{
+   reg $vdep i.`x', noheader
+        }
+	
+	
+**Para copiar variables**
+ foreach x of varlist age race wage{
+   gen `x'2 =`x'
+        }
+	
+
+*For values*
+	
+
+*Generar variables*
+forvalues x = 1/5{
+
+gen v`x'=.
+}	
+
+*Copiar variables*
+forvalues x = 1/5{
+	
+gen v`x'r=v`x'
+}		
+
+***
+
+global v v1r v2r v3r v4r v5r
+recode $v (.=1)
