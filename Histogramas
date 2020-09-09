@@ -1,0 +1,30 @@
+*Histogramas*
+sysuse nlsw88
+
+
+histogram wage, horizontal
+histogram wage, normal
+histogram wage, bin(8) addlabel frequency xtitle(Salario) title(Histograma salario)
+
+
+histogram wage, width(3.5) addlabel percent
+
+
+histogram wage, bin(14) percent  by(race, total)
+
+
+bin(#)       set number of bins to #
+width(#)     set width of bins to #
+start(#)     set lower limit of first bin to #
+
+
+density      draw as density; the default
+fraction     draw as fractions
+frequency    draw as frequencies
+percent      draw as percentages
+
+
+vertical              vertical bar plot; the default
+horizontal            horizontal bar plot
+base(#)               value to drop to; default is 0
+barwidth(#)           width of bar in xvar units
