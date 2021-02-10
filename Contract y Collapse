@@ -1,0 +1,54 @@
+
+
+***Contract*****
+clear
+sysuse nlsw88
+
+tab race collgrad
+
+preserve
+
+contract race collgrad
+
+browse
+
+restore
+
+
+preserve
+contract occupation collgrad, percent(porcentaje) zero nomiss
+browse
+
+help contract
+
+restore
+
+
+
+
+
+
+
+
+
+***Collapse***
+clear
+sysuse nlsw88
+
+
+summ grade age
+
+collapse (mean)grade age
+browse
+
+
+collapse (mean) age grade wage, by(occupation)
+browse
+
+help collapse
+
+collapse (mean) age grade wage (count) n=age, by(occupation)
+browse
+
+
+restore
