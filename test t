@@ -1,0 +1,20 @@
+
+*Test t de comparación de promedios*
+
+https://stats.idre.ucla.edu/stata/output/t-test/
+
+sysuse nlsw88	
+
+recode race (3=.)
+
+ttest wage, by( race )	
+
+ttest wage, by( race ) level(99)
+
+ttest wage, by(race) unequal welch
+
+ttest wage==7	
+
+ttest wage==10
+
+ttest wage==8
