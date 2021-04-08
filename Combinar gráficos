@@ -1,0 +1,27 @@
+
+
+*** Combinar gráficos ***
+
+sysuse nlsw88
+
+scatter wage grade 
+
+scatter wage grade || lfit wage grade
+
+scatter wage grade || lfit wage grade ||, by(race)
+
+scatter wage grade || lfit wage grade ||, by(race,  row(1))
+
+
+**Tabla de gráficos***
+
+graph pie occupation, over(occupation) name(g1)
+
+histogram wage, name(g2)
+
+graph box wage, by(union) name(g3)
+
+graph combine g1 g2 g3
+
+
+graph drop g1 g2 g3
