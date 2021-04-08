@@ -1,0 +1,37 @@
+
+***********Ponderación // expansión*******
+*aweight, iweight y fweight*
+clear
+
+sysuse nlsw88
+
+tab collgrad
+
+*suponiendo que en la población haya 20% de graduadas universitarias*
+76,31--->	80	= (80/76,31) = 1,048
+23,69--->	20	= (20/23,69) = 0,844
+
+gen pond1 = collgrad
+recode pond1 (0 = 1.048) (1 = 0.844)
+
+browse collgrad pond1
+
+
+tabulate collgrad [aweight = pond1]
+
+corr grade wage
+corr grade wage [aweight = pond1]
+
+tabulate collgrad [iweight = pond1]
+
+
+**Expansión**
+
+/* *Suponiendo que la población total sea de aproximadamente
+125 millónes de mujeres en eeuu en 1988*/
+ 
+N/n = (125000000/2246)
+
+gen expa = 55655
+
+tabulate collgrad [fweight = expa]
