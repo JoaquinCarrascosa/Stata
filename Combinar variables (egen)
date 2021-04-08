@@ -1,0 +1,42 @@
+
+
+**Combinar variables (tipología) egen group**
+
+sysuse nlsw88
+
+tab collgrad
+tab south
+
+egen collsouth = group(collgrad south)
+
+tab collsouth
+
+tab collgrad south
+
+lab def collsouth 1 "No graduadas no sur"
+lab def collsouth 2 "No graduadas sur", add
+lab def collsouth 3 "Graduadas no sur", add
+lab def collsouth 4 "Graduadas sur", add
+
+lab values collsouth collsouth
+
+drop collsouth
+
+***Si quieren incorporar missing como categoría***
+
+replace collgrad=. in 5
+replace south=. in 5
+
+replace collgrad=. in 10
+replace south=. in 8
+
+egen collsouth2 = group(collgrad south), missing
+
+tab collgrad south, missing
+tab collsouth2
+
+drop collsouth2
+
+egen collsouth3 = group(collgrad south)
+
+tab collsouth3
