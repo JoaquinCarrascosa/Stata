@@ -1,0 +1,27 @@
+
+*****Gráficos de intervalo de confianza*****
+
+ssc install ciplot
+help ciplot
+
+sysuse nlsw88
+
+*Intervalo de confianza, error estándar y gráfico univariado*
+ci grade
+ciplot grade
+
+*Bivariado*
+bysort race: ci grade
+ciplot grade, by(race)
+
+*Girar etiquetas en ángulo*
+ciplot grade, by(occupation) xla(, ang(65))
+
+*Conectar los puntos*
+ciplot grade, by(occupation) xla(, ang(65)) recast(conn)
+
+*Poner en horizontal*
+ciplot grade, by(occupation) hor
+
+*Cambiar intervalo de confianza 99, 90, etc..*
+ciplot grade, by(race) level(99)
