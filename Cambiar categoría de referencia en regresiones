@@ -1,0 +1,27 @@
+
+*****Cambiar categoría de referencia en regresión****
+
+sysuse nlsw88
+
+tab occupation
+
+reg wage grade i.occupation
+
+reg wage grade ib1.occupation
+
+reg wage grade ib2.occupation
+
+*fvset - factor variable set*
+
+help fvset
+
+fvset base 2 occupation
+
+*default, primera categoría (valor más bajo)*
+fvset base first occupation
+*valor más alto*
+fvset base last occupation
+*valor de la moda*
+fvset base frequent occupation
+
+fvset clear occupation
