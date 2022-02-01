@@ -1,0 +1,70 @@
+
+******Gráficar resultados de regresiones (coeficientes)**
+
+*Instalar coefplot*
+ssc install coefplot
+help coefplot
+
+*
+sysuse auto, clear
+regress price mpg trunk length turn
+
+*Gráfico básico (sin constante, y con línea de 0*
+coefplot, drop(_cons) xline(0)
+
+*Poner en vertical
+coefplot, vertical drop(_cons) yline(0)
+ 
+ 
+
+ *Incluir categoría de referencia para variables categóricas**
+gen mpp = mpg/8
+
+mlogit rep78 mpp i.foreign if rep>=3
+
+coefplot, nolabel drop(_cons) keep(*:) omitted baselevels
+
+
+** Dos modelos en un mismo gráfico
+sysuse auto, clear
+
+regress price mpg trunk length turn if foreign==0
+
+estimates store D
+
+regress price mpg trunk length turn if foreign==1
+
+estimates store F
+
+coefplot D F, drop(_cons) xline(0)
+
+
+***Dos gráficos 
+
+. sysuse auto, clear
+
+. regress price mpg trunk length turn if foreign==0
+
+. estimates store D
+
+. regress price mpg trunk length turn if foreign==1
+
+. estimates store F
+
+coefplot D, bylabel(Domestic Cars)  drop(_cons) xline(0) ///
+       || F, bylabel(Foreign Cars)  drop(_cons) xline(0)
+
+
+**COMO ESTANDARIZAR COEFICIENTES!** (se puede estandarizar las variables)
+
+regress price mpg trunk length turn, beta
+
+qui esttab, beta
+mat beta= e(beta)
+
+coefplot mat(beta), drop(_cons) xline(0)
+
+
+**Link
+
+http://repec.sowi.unibe.ch/stata/coefplot/getting-started.html
